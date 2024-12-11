@@ -34,7 +34,6 @@ function VitalsForm() {
 	const validateInputs = () => {
 		const { heartRate, bloodPressure, respiratoryRate, bodyTemperature } = formData;
 
-		// Parse numeric inputs
 		const parsedHeartRate = parseInt(heartRate, 10);
 		const parsedRespiratoryRate = parseInt(respiratoryRate, 10);
 		const parsedBodyTemperature = parseFloat(bodyTemperature);
@@ -244,6 +243,24 @@ function VitalsForm() {
 						)}
 					</tbody>
 				</table>
+
+				{/* Normal Ranges Box */}
+				<div
+					style={{
+						marginTop: "10px",
+						fontSize: "0.85em",
+						color: "#555",
+						lineHeight: "1.5",
+					}}
+				>
+					<h4 style={{ fontWeight: "bold", marginBottom: "5px" }}>Normal Ranges:</h4>
+					<p>
+						<b>Heart Rate:</b> 60-100 bpm <br />
+						<b>Blood Pressure:</b> 90/60 - 120/80 mmHg <br />
+						<b>Respiratory Rate:</b> 12-20 breaths/min <br />
+						<b>Body Temperature:</b> 97.0-99.0 °F (36.1-37.2 °C)
+					</p>
+				</div>
 			</div>
 		</div>
 	);
