@@ -30,9 +30,60 @@ function VitalsForm() {
 		setFormData({ ...formData, [name]: value });
 	};
 
+	// Validate input values
+	const validateInputs = () => {
+		const { heartRate, bloodPressure, respiratoryRate, bodyTemperature } = formData;
+
+		// Parse numeric inputs
+		const parsedHeartRate = parseInt(heartRate, 10);
+		const parsedRespiratoryRate = parseInt(respiratoryRate, 10);
+		const parsedBodyTemperature = parseFloat(bodyTemperature);
+
+		if (isNaN(parsedHeartRate) || parsedHeartRate < 40 || parsedHeartRate > 180) {
+			alert("Heart rate must be a number between 40 and 180 bpm.");
+			return false;
+		}
+
+		const bloodPressureRegex = /^\d{2,3}\/\d{2,3}$/;
+		if (!bloodPressureRegex.test(bloodPressure)) {
+			alert("Blood pressure must be in the format 'number/number' (e.g., 120/80).");
+			return false;
+		}
+
+		const [systolic, diastolic] = bloodPressure.split("/").map(Number);
+		if (
+			isNaN(systolic) ||
+			isNaN(diastolic) ||
+			systolic < 80 ||
+			systolic > 200 ||
+			diastolic < 40 ||
+			diastolic > 120
+		) {
+			alert(
+				"Blood pressure values are out of range. Systolic should be 80-200 and diastolic should be 40-120."
+			);
+			return false;
+		}
+
+		if (isNaN(parsedRespiratoryRate) || parsedRespiratoryRate < 8 || parsedRespiratoryRate > 40) {
+			alert("Respiratory rate must be a number between 8 and 40 breaths per minute.");
+			return false;
+		}
+
+		if (isNaN(parsedBodyTemperature) || parsedBodyTemperature < 95 || parsedBodyTemperature > 105) {
+			alert("Body temperature must be a number between 95.0°F and 105.0°F.");
+			return false;
+		}
+
+		return true;
+	};
+
 	// Handle form submission
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+		if (!validateInputs()) return;
+
 		try {
 			const response = await axios.post("http://localhost:5001/api/vitals", formData);
 			setVitals([response.data.newVital, ...vitals]);
@@ -84,22 +135,6 @@ function VitalsForm() {
 					<div>
 						<label>
 							Heart Rate (bpm)
-							<span
-								style={{
-									color: "blue",
-									fontSize: "1.2em",
-									marginLeft: "8px",
-									cursor: "pointer",
-								}}
-								onClick={() =>
-									window.open(
-										"https://www.youtube.com/watch?v=AHHr8qNU9QY&ab_channel=HamiltonHealthSciences",
-										"_blank"
-									)
-								}
-							>
-								&#9432;
-							</span>
 							<input
 								type="number"
 								placeholder="e.g., 75"
@@ -113,22 +148,6 @@ function VitalsForm() {
 					<div>
 						<label>
 							Blood Pressure (mmHg)
-							<span
-								style={{
-									color: "blue",
-									fontSize: "1.2em",
-									marginLeft: "8px",
-									cursor: "pointer",
-								}}
-								onClick={() =>
-									window.open(
-										"https://www.youtube.com/watch?v=lpvyCGPsVDU&ab_channel=Drugs.com",
-										"_blank"
-									)
-								}
-							>
-								&#9432;
-							</span>
 							<input
 								type="text"
 								placeholder="e.g., 120/80"
@@ -142,22 +161,6 @@ function VitalsForm() {
 					<div>
 						<label>
 							Respiratory Rate (breaths per min)
-							<span
-								style={{
-									color: "blue",
-									fontSize: "1.2em",
-									marginLeft: "8px",
-									cursor: "pointer",
-								}}
-								onClick={() =>
-									window.open(
-										"https://www.youtube.com/watch?v=atm-gnobU7o&t=6s&ab_channel=EMTprep",
-										"_blank"
-									)
-								}
-							>
-								&#9432;
-							</span>
 							<input
 								type="number"
 								placeholder="e.g., 16"
@@ -241,24 +244,6 @@ function VitalsForm() {
 						)}
 					</tbody>
 				</table>
-
-				{/* Normal Ranges Box */}
-				<div
-					style={{
-						marginTop: "10px",
-						fontSize: "0.85em",
-						color: "#555",
-						lineHeight: "1.5",
-					}}
-				>
-					<h4 style={{ fontWeight: "bold", marginBottom: "5px" }}>Normal Ranges:</h4>
-					<p>
-						<b>Heart Rate:</b> 60-100 bpm <br />
-						<b>Blood Pressure:</b> 90/60 - 120/80 mmHg <br />
-						<b>Respiratory Rate:</b> 12-20 breaths/min <br />
-						<b>Body Temperature:</b> 97.0-99.0 °F (36.1-37.2 °C)
-					</p>
-				</div>
 			</div>
 		</div>
 	);
