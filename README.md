@@ -2,6 +2,7 @@
 
 <img width="1167" alt="Screenshot 2024-12-11 at 7 41 53 PM" src="https://github.com/user-attachments/assets/0237584a-69d1-4269-8511-fdd7a2e7e353" />
 
+Like my project? My online tip jar: https://tiptopjar.com/sofiyaperez :D
 
 ## Set up PostgreSQL
 On Mac:
