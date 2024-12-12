@@ -130,10 +130,17 @@ function VitalsForm() {
 							Heart Rate (bpm)
 							<span
 								style={{
-									color: "blue",
-									fontSize: "1.2em",
+									backgroundColor: "#007bff",
+									color: "white",
+									borderRadius: "50%",
+									width: "20px",
+									height: "20px",
+									display: "inline-flex",
+									alignItems: "center",
+									justifyContent: "center",
 									marginLeft: "8px",
 									cursor: "pointer",
+									fontWeight: "bold",
 								}}
 								onClick={() =>
 									window.open(
@@ -142,7 +149,7 @@ function VitalsForm() {
 									)
 								}
 							>
-								&#9432;
+								i
 							</span>
 							<input
 								type="number"
@@ -159,10 +166,17 @@ function VitalsForm() {
 							Blood Pressure (mmHg)
 							<span
 								style={{
-									color: "blue",
-									fontSize: "1.2em",
+									backgroundColor: "#007bff",
+									color: "white",
+									borderRadius: "50%",
+									width: "20px",
+									height: "20px",
+									display: "inline-flex",
+									alignItems: "center",
+									justifyContent: "center",
 									marginLeft: "8px",
 									cursor: "pointer",
+									fontWeight: "bold",
 								}}
 								onClick={() =>
 									window.open(
@@ -171,7 +185,7 @@ function VitalsForm() {
 									)
 								}
 							>
-								&#9432;
+								i
 							</span>
 							<input
 								type="text"
@@ -188,10 +202,17 @@ function VitalsForm() {
 							Respiratory Rate (breaths per min)
 							<span
 								style={{
-									color: "blue",
-									fontSize: "1.2em",
+									backgroundColor: "#007bff",
+									color: "white",
+									borderRadius: "50%",
+									width: "20px",
+									height: "20px",
+									display: "inline-flex",
+									alignItems: "center",
+									justifyContent: "center",
 									marginLeft: "8px",
 									cursor: "pointer",
+									fontWeight: "bold",
 								}}
 								onClick={() =>
 									window.open(
@@ -200,7 +221,7 @@ function VitalsForm() {
 									)
 								}
 							>
-								&#9432;
+								i
 							</span>
 							<input
 								type="number"
@@ -285,24 +306,6 @@ function VitalsForm() {
 						)}
 					</tbody>
 				</table>
-
-				{/* Normal Ranges Box */}
-				<div
-					style={{
-						marginTop: "10px",
-						fontSize: "0.85em",
-						color: "#555",
-						lineHeight: "1.5",
-					}}
-				>
-					<h4 style={{ fontWeight: "bold", marginBottom: "5px" }}>Normal Ranges:</h4>
-					<p>
-						<b>Heart Rate:</b> 60-100 bpm <br />
-						<b>Blood Pressure:</b> 90/60 - 120/80 mmHg <br />
-						<b>Respiratory Rate:</b> 12-20 breaths/min <br />
-						<b>Body Temperature:</b> 97.0-99.0 °F (36.1-37.2 °C)
-					</p>
-				</div>
 			</div>
 		</div>
 	);
