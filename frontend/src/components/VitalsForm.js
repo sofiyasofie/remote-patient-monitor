@@ -11,7 +11,6 @@ function VitalsForm() {
 		symptoms: "",
 	});
 
-	// Fetch vitals from the backend
 	useEffect(() => {
 		const fetchVitals = async () => {
 			try {
@@ -24,13 +23,11 @@ function VitalsForm() {
 		fetchVitals();
 	}, []);
 
-	// Handle input changes
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setFormData({ ...formData, [name]: value });
 	};
 
-	// Validate input values
 	const validateInputs = () => {
 		const { heartRate, bloodPressure, respiratoryRate, bodyTemperature } = formData;
 
@@ -77,7 +74,6 @@ function VitalsForm() {
 		return true;
 	};
 
-	// Handle form submission
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
@@ -98,7 +94,6 @@ function VitalsForm() {
 		}
 	};
 
-	// Helper function to determine cell background color
 	const getCellStyle = (value, type) => {
 		let isNormal = false;
 
@@ -127,13 +122,28 @@ function VitalsForm() {
 
 	return (
 		<div style={{ display: "flex", gap: "20px", justifyContent: "center", padding: "20px" }}>
-			{/* Form Section */}
 			<div>
 				<h2>Enter Your Vitals</h2>
 				<form onSubmit={handleSubmit} style={{ maxWidth: "300px" }}>
 					<div>
 						<label>
 							Heart Rate (bpm)
+							<span
+								style={{
+									color: "blue",
+									fontSize: "1.2em",
+									marginLeft: "8px",
+									cursor: "pointer",
+								}}
+								onClick={() =>
+									window.open(
+										"https://www.youtube.com/watch?v=AHHr8qNU9QY&ab_channel=HamiltonHealthSciences",
+										"_blank"
+									)
+								}
+							>
+								&#9432;
+							</span>
 							<input
 								type="number"
 								placeholder="e.g., 75"
@@ -147,6 +157,22 @@ function VitalsForm() {
 					<div>
 						<label>
 							Blood Pressure (mmHg)
+							<span
+								style={{
+									color: "blue",
+									fontSize: "1.2em",
+									marginLeft: "8px",
+									cursor: "pointer",
+								}}
+								onClick={() =>
+									window.open(
+										"https://www.youtube.com/watch?v=lpvyCGPsVDU&ab_channel=Drugs.com",
+										"_blank"
+									)
+								}
+							>
+								&#9432;
+							</span>
 							<input
 								type="text"
 								placeholder="e.g., 120/80"
@@ -160,6 +186,22 @@ function VitalsForm() {
 					<div>
 						<label>
 							Respiratory Rate (breaths per min)
+							<span
+								style={{
+									color: "blue",
+									fontSize: "1.2em",
+									marginLeft: "8px",
+									cursor: "pointer",
+								}}
+								onClick={() =>
+									window.open(
+										"https://www.youtube.com/watch?v=atm-gnobU7o&t=6s&ab_channel=EMTprep",
+										"_blank"
+									)
+								}
+							>
+								&#9432;
+							</span>
 							<input
 								type="number"
 								placeholder="e.g., 16"
