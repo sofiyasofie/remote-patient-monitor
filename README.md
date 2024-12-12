@@ -4,9 +4,17 @@
 On Mac:
 ```
 brew install postgresql
+```
+```
 brew services start postgresql
+```
+```
 psql -U postgres
+```
+```
 CREATE DATABASE vitalsdb;
+```
+```
 \c vitalsdb
 CREATE TABLE vitals (
     id SERIAL PRIMARY KEY,
@@ -31,7 +39,11 @@ PG_DATABASE=vitalsdb
 Verify installation by running:
 ```
 psql -U postgres
+```
+```
 \l
+```
+```
 \dt 
 ```
 Now run the web app, and use the form to insert some vital signs to be included in the table!
